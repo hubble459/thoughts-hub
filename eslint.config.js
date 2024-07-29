@@ -11,7 +11,6 @@ export default withNuxt([
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     ...pluginVue.configs['flat/essential'],
-    { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
     stylistic.configs.customize({
         indent: 4,
         commaDangle: 'always-multiline',
@@ -22,4 +21,16 @@ export default withNuxt([
         arrowParens: true,
         blockSpacing: true,
     }),
+    {
+        files: ['**/*.vue'],
+        languageOptions: { parserOptions: { parser: tseslint.parser } },
+        rules: {
+            'vue/script-indent': ['error', 4, {
+                baseIndent: 1,
+            }],
+            'vue/html-indent': ['error', 4],
+            'vue/multi-word-component-names': 'off',
+            '@stylistic/indent': 'off',
+        },
+    },
 ]);
